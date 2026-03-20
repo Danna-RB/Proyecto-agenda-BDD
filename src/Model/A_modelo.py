@@ -19,7 +19,7 @@ def Leer_Registros():
                 registros.append(datos)  #guarda el registro 
 
     except FileNotFoundError:  #si el archivo no existe
-        pas
+        pass
 
     return registros  #retorna todos los r
 
