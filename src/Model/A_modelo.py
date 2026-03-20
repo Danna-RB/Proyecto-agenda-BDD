@@ -5,8 +5,7 @@ def Guardar_Registro(id, nombre, apellido, fecha, sexo, telefono):
     registro = f"{id};{nombre};{apellido};{fecha};{sexo};{telefono}\n"
 
     with open(archivoDatos, "a") as archivo: 
-        archivo.write(registro)  #escribe el registro en el archivo
-
+        archivo.write(registro) 
 
 def Leer_Registros():
 
