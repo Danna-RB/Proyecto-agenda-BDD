@@ -1,57 +1,57 @@
-archivoDatos = "src/Persistencia/agenda.agp"  #ruta del archivo donde se guardan los registros
+archivoDatos = "src/Persistencia/agenda.agp" 
 
 def Guardar_Registro(id, nombre, apellido, fecha, sexo, telefono):
     
-    registro = f"{id};{nombre};{apellido};{fecha};{sexo};{telefono}\n"  #crea una linea con los datos separados por ;
+    registro = f"{id};{nombre};{apellido};{fecha};{sexo};{telefono}\n"
 
-    with open(archivoDatos, "a") as archivo:  #abre el archivo en modo agregar
+    with open(archivoDatos, "a") as archivo: 
         archivo.write(registro)  #escribe el registro en el archivo
 
 
 def Leer_Registros():
 
-    registros = []  #lista donde se guardarán todos los registros
+    registros = []  #lista donde se guardan todos los registros
 
     try:
-        with open(archivoDatos, "r") as archivo:  #abre el archivo en modo lectura
+        with open(archivoDatos, "r") as archivo:
 
-            for linea in archivo:  #recorre cada linea del archivo
+            for linea in archivo: 
                 datos = linea.strip().split(";")  #elimina salto de linea y separa los datos por ;
-                registros.append(datos)  #guarda el registro en la lista
+                registros.append(datos)  #guarda el registro 
 
     except FileNotFoundError:  #si el archivo no existe
-        pass  
+        pas
 
-    return registros  #retorna todos los registros
+    return registros  #retorna todos los r
 
 
 def buscarRegistro(id_buscar):
 
-    registros = Leer_Registros()  #obtiene todos los registros
+    registros = Leer_Registros()  #obtiene todos los r
 
-    for r in registros:  #recorre cada registro
-        if r[0] == id_buscar:  #compara el ID
-            return r  # retorna el registro encontrado
+    for r in registros: 
+        if r[0] == id_buscar: 
+            return r  
 
-    return None  #si no encuentra nada
+    return None  
 
 
 def eliminarRegistros(id_eliminar):
 
-    registros = Leer_Registros()  #obtiene todos los registros
-    nuevos = []  #lista para guardar registros que no se eliminarán
+    registros = Leer_Registros() 
+    nuevos = []  #lista para guardar registros que no se eliminan
 
-    eliminado = False  #bandera para saber si se eliminó algo
+    eliminado = False  # para saber si se elimino algo
 
-    for r in registros:  #recorre registros
-        if r[0] != id_eliminar:  #si el ID no coincide
-            nuevos.append(r)  #lo guarda
+    for r in registros: 
+        if r[0] != id_eliminar: 
+            nuevos.append(r)
         else:
-            eliminado = True  #indica que el registro fue eliminado
+            eliminado = True  
 
     with open(archivoDatos, "w") as archivo:  #abre el archivo en modo sobrescritura
         for r in nuevos:  #recorre los registros restantes
-            linea = ";".join(r) + "\n"  #vuelve a crear la linea
+            linea = ";".join(r) + "\n"  #vuelve a crear la l
             archivo.write(linea)  #escribe el registro
 
-    return eliminado  #retorna si se eliminó o no
+    return eliminado
