@@ -26,7 +26,7 @@ def Leer_Registros():
 
 def buscarRegistro(id_buscar):
 
-    registros = Leer_Registros()  #obtiene todos los r
+    registros = Leer_Registros() 
 
     for r in registros: 
         if r[0] == id_buscar: 
